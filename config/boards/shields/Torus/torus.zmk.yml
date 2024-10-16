@@ -1,0 +1,11 @@
+file_format: "1"
+id: torus
+name: Torus
+type: shield
+url: https://github.com/Torugo76/Torus
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - torus_left
+  - torus_right
