@@ -1,0 +1,13 @@
+{
+  "json-comments": {
+    "tips": "Please install the JsonComments plugin to enable commenting functionality for JSON files, see: https://github.com/zhangfisher/json_comments_extension",
+    "config/torus.json": {
+      "layouts.LAYOUT.layout[0].row": "TECLA ESQ | INICIO DO LADO ESQUERDO LINHA 1",
+      "layouts.LAYOUT.layout[11].row": "TECLA PG UP | FIM DO LADO ESQUERDO LINHA 1",
+      "layouts.LAYOUT.layout[12].row": "TECLA TAB | INICIO DO LADO ESQUERDO LINHA 2",
+      "layouts.LAYOUT.layout[23].row": "TECLA PG DN | FIM DO LADO DIREITO LINHA 2",
+      "layouts.LAYOUT.layout[24].row": "TECLA SHIFT | INICIO DO LADO ESQUERDO LINHA 3",
+      "layouts.LAYOUT.layout[35].row": "TECLA , | FIM DO LADO DIREITO LINHA 3"
+    }
+  }
+}
