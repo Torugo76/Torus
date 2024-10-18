@@ -8,9 +8,9 @@
 
 
 
-//VERIFICAR O QUE É ESTE COL-offset = 7, ACREDITO QUE SEJA O NUMERO DE COLUNAS DO LADO DIREITO PARA ELE IDENTIFICAR ONDE COMEÇA OU QUANTAS TEM...
+//Deslocamento (col-offset) de 6 porque o lado esquerdo tem 6 colunas
 &default_transform {
-    col-offset = <7>;
+    col-offset = <6>;
 };
 
 &kscan0 {
