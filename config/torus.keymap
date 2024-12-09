@@ -19,23 +19,27 @@
 
 / {
     // Ative a camada 'AMBAS' pressionando DIREITA e ESQUERDA
+        conditional_layers {
+            compatible = "zmk,conditional-layers";
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        AMBAS_layer {
-            if-layers = <ESQUERDA  DIREITA>;
-            then-layer = <AMBAS>;
+            AMBAS_layer {
+                if-layers = <ESQUERDA  DIREITA>;
+                then-layer = <AMBAS>;
+            };
         };
-    };
+    //Fim
 
-    combos {
-        compatible = "zmk,combos";
-        Backspace {
-            bindings = <&kp BACKSPACE>;
-            key-positions = <52 53>;
+
+    //Inicio  Combos
+        combos {
+            compatible = "zmk,combos";
+            Backspace {
+                bindings = <&kp BACKSPACE>;
+                key-positions = <52 53>;
+            };
         };
-    };
+    //Fim
+
 
     keymap 
         compatible = "zmk,keymap";
@@ -113,7 +117,7 @@
                 // |   |   |   |   |   |   |           |   |   |   |   |   |    |
                 // |   |   |   |   |   |   |           |   |   |   |   |   |    |
                 // --------------------------------------------------------------
-    
+
                 display-name = "AMBAS";
                 bindings = <
         &none  &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
