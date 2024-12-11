@@ -12,7 +12,8 @@
     #define BASE 0
     #define ESQUERDA 1
     #define DIREITA 2
-    #define AMBAS 3
+    #define DIREITA_Num 3
+    #define AMBAS 4
 //Fim das definiçoes
 
 
