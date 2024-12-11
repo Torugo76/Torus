@@ -165,7 +165,7 @@
 
 
         // Inicio do Layout DIREITA_Numerico
-                DIREITA_layer {
+                DIREITA_Num_layer {
                     display-name = "DIREITA_Num";
 
                         // ┌───────┬─────┬────┬─────┬─────┬─────┐               ┌───────┬─────┬─────┬─────┬─────┬─────┐
