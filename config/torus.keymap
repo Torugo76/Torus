@@ -136,7 +136,7 @@
                         &kp TAB    &none  &mkp MB4             &mmv MOVE_UP     &mkp MB5          &msc SCRL_UP       &none  &none  &none  &none  &none   &none
                         &kp LSHFT  &none  &mmv MOVE_LEFT       &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &msc SCRL_DOWN     &none  &none  &none  &none  &none   &none
                         &kp LCTRL  &none  &msc SCRL_LEFT       &msc SCRL_RIGHT  &mkp MB1          &mkp MB2           &none  &none  &none  &none  &none   &none
-                                   &none  &tog ESQUERD8A_MOUSE  &kp LALT         &none             &none              &none  &none  &none  &none  &none
+                                   &none  &tog ESQUERDA_MOUSE  &kp LALT         &none             &none              &none  &none  &none  &none  &none
                     >;
                 };
         // Fim do Layout ESQUERDA_MOUSE
