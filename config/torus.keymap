@@ -41,7 +41,7 @@
     //Fim
 
 
-    keymap 
+    keymap {
         compatible = "zmk,keymap";
 
 
@@ -128,5 +128,5 @@
                 >;
             };
     // Inicio do Layout AMBAS
-    ;
+    };
 };
