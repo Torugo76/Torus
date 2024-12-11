@@ -91,7 +91,7 @@
                     display-name = "ESQUERDA";
 
                         // ┌───────┬─────┬────┬─────┬─────┬─────┐               ┌───────┬─────┬────┬─────┬─────┬─────┐
-                        // │   ~   │     | F2 | F3  | F4  | F5  |               │       │     |    |     |     |     |
+                        // │       │     | F2 | F3  | F4  | F5  |               │       │     |    |     |     |     |
                         // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼────┼─────┼─────┼─────┤
                         // │ CAPS  | ►⫼  |    | ◄)) |     |  ↲  |               │       |     |    |     |     |     |
                         // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼────┼─────┼─────┼─────┤
@@ -103,7 +103,7 @@
                         //         └─────┴────┴─────┴─────┴─────┘               └───────┴─────┴────┴─────┴─────┘
 
                     bindings = <
-                        &kp TILDE  &none         &kp F2        &kp F3 &kp F4 &kp F5    &none        &none  &none  &none  &none   &none
+                        &none      &none         &kp F2        &kp F3 &kp F4 &kp F5    &none        &none  &none  &none  &none   &none
                         &kp CLCK   &kp C_PP      &none         &kp C_VOL_UP  &none     &kp RET      &none  &none  &none  &none  &none   &none
                         &kp LSHFT  &kp C_PREV    &kp C_NEXT    &kp C_VOL_DN  &kp LBRC  &kp RBRC     &none  &none  &none  &none  &none   &none
                         &kp LCTRL  &kp C_RW      &kp C_FF      &kp C_MUTE    &kp LBKT  &kp RBKT     &none  &none  &none  &none  &none   &none
@@ -136,7 +136,7 @@
                         &kp TAB    &none  &mkp MB4             &mmv MOVE_UP     &mkp MB5          &msc SCRL_UP       &none  &none  &none  &none  &none   &none
                         &kp LSHFT  &none  &mmv MOVE_LEFT       &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &msc SCRL_DOWN     &none  &none  &none  &none  &none   &none
                         &kp LCTRL  &none  &msc SCRL_LEFT       &msc SCRL_RIGHT  &mkp MB1          &mkp MB2           &none  &none  &none  &none  &none   &none
-                                   &none  &tog ESQUERDA_MOUSE  &kp LALT         &none             &none              &none  &none  &none  &none  &none
+                                   &none  &tog ESQUERD8A_MOUSE  &kp LALT         &none             &none              &none  &none  &none  &none  &none
                     >;
                 };
         // Fim do Layout ESQUERDA_MOUSE
@@ -155,7 +155,7 @@
                         // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
                         // │       |     |    |     |     |     |               │ PG UP |  ←  |  ▲  | DEL |     |  -  |
                         // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
-                        // │       |     |    |     |     |     |               │ PG DN |  ◄  |  ▼  |  ►  |     |     |
+                        // │       |     |    |     |     |     |               │ PG DN |  ◄  |  ▼  |  ►  |     |  ~  |
                         // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
                         // │       |     |    |     |     |     |               │       |     |     |     |     |     |
                         // └───────┼─────|────|─────|─────|─────|               ├───────┼─────|─────|─────|─────|─────┘
@@ -165,7 +165,7 @@
                     bindings = <
                         &none   &none   &none   &none   &none   &none         &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3 &kp EQUAL
                         &none   &none   &none   &none   &none   &none         &kp PG_UP   &kp BSPC      &kp UP        &kp DEL       &none        &kp MINUS
-                        &none   &none   &none   &none   &none   &none         &kp PG_DN   &kp LEFT      &kp DOWN      &kp RIGHT     &none        &none
+                        &none   &none   &none   &none   &none   &none         &kp PG_DN   &kp LEFT      &kp DOWN      &kp RIGHT     &none        &kp TILDE
                         &none   &none   &none   &none   &none   &none         &none       &none         &none         &none         &none        &none
                                 &none   &none   &none   &none   &none         &none       &none         &none         &none         &none
                      >;
