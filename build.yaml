@@ -1,9 +1,10 @@
-# This file generates the GitHub Actions matrix.
-# For simple board + shield combinations, add them to the top level board and
-# shield arrays, for more control, add individual board + shield combinations
-# to the `include` property. You can also use the `cmake-args` property to
-# pass flags to the build command and `artifact-name` to assign a name to
-# distinguish build outputs from each other:
+# Este arquivo gera a matriz GitHub Actions.
+#
+# Para combinações simples de tabuleiro + escudo, adicione-os aos conjuntos de tabuleiro e escudo de nível superior;
+#   para obter mais controle, adicione combinações individuais de tabuleiro + escudo.
+#
+# para a propriedade `include`. Você também pode usar a propriedade `cmake-args`;
+#   para passar sinalizadores para o comando build e `artifact-name` para atribuir um nome para distinguir as saídas do build umas das outras:
 #
 # board: [ "nice_nano_v2" ]
 # shield: [ "corne_left", "corne_right" ]

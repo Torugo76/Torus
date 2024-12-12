@@ -1,11 +1,7 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
 #include "torus.dtsi"
 
+
+// Essas linhas nao precisam estar igualmentente soldadas em cada lado mas de preferência soldar iguais. Mas provavel que tenha que inverter no outro '.overlay' a ordem se estiver ao contrario.
 &kscan0 {
     col-gpios
         = <&pro_micro 4 GPIO_ACTIVE_HIGH>

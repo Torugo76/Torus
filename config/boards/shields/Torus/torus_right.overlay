@@ -1,18 +1,13 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
 #include "torus.dtsi"
 
-
-
-//Deslocamento (col-offset) de 6 porque o lado esquerdo tem 6 colunas
+//Deslocamento (col-offset) de 6 porque o lado esquerdo tem 6 colunas, entao para lado direito, tem que pular essas colunas.
 &default_transform {
     col-offset = <6>;
 };
 
+
+
+// Essas linhas nao precisam estar igualmentente soldadas em cada lado mas de preferência soldar iguais. Mas provavel que tenha que inverter no outro '.overlay' a ordem se estiver ao contrario.
 &kscan0 {
     col-gpios
         = <&pro_micro 9 GPIO_ACTIVE_HIGH>
