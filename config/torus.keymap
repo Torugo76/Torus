@@ -12,7 +12,7 @@
 
 //Inicio das definiçoes de configurações
         //MOUSE
-            #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // padrão: 600
+            #define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // padrão: 600
             #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // padrão: 10
 //Fim das definiçoes de configurações
 
