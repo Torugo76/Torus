@@ -17,6 +17,7 @@
 
 
 
+
 //Inicio das definiçoes das camadas
     #define BASE 0
     #define ESQUERDA 1
@@ -25,6 +26,7 @@
     #define DIREITA_Num 4
     #define AMBAS 5
 //Fim das definiçoes das camadas
+
 
 
 
@@ -46,6 +48,8 @@
 //Fim dos comportamentos de teclas
 
 
+
+
 / {
     // Ative a camada 'AMBAS' pressionando DIREITA e ESQUERDA
         conditional_layers {
@@ -57,6 +61,8 @@
             };
         };
     //Fim
+
+
 
 
     //Inicio  Combos
@@ -74,46 +80,52 @@
     	        key-positions = <0 13>;
                 bindings = <&caps_word>;
             };
-/*
-*           lalt {
-*               timeout-ms = <20>;
-*        	    key-positions = <8 9 19>;
-*               bindings = <&kp LALT>; 
-*        	    layers = <ESQUERDA>; 
-*           };
-*/
+        /*
+        *           lalt {
+        *               timeout-ms = <20>;
+        *        	    key-positions = <8 9 19>;
+        *               bindings = <&kp LALT>; 
+        *        	    layers = <ESQUERDA>; 
+        *           };
+        */
         };
     //Fim
 
 
-/*
-*   //Inicio  dos comportamentos
-*       behaviors {
-*           hm: homerow_mods {
-*               compatible = "zmk,behavior-hold-tap";
-*               label = "HOMEROW_MODS";
-*               #binding-cells = <2>;
-*               tapping-term-ms = <200>;
-*               quick_tap_ms = <0>;
-*               flavor = "tap-preferred";
-*               bindings = <&kp>, <&kp>;
-*           };
-*           hs: homerow_shifts {
-*               compatible = "zmk,behavior-hold-tap";
-*               label = "HOMEROW_SHIFTS";
-*               #binding-cells = <2>;
-*               tapping-term-ms = <150>;
-*               quick_tap_ms = <0>;
-*               flavor = "balanced";
-*               bindings = <&kp>, <&kp>;
-*           };
-*       };
-*    //Fim
-*/
+
+
+    //Inicio  dos comportamentos
+        /*
+        *       behaviors {
+        *           hm: homerow_mods {
+        *               compatible = "zmk,behavior-hold-tap";
+        *               label = "HOMEROW_MODS";
+        *               #binding-cells = <2>;
+        *               tapping-term-ms = <200>;
+        *               quick_tap_ms = <0>;
+        *               flavor = "tap-preferred";
+        *               bindings = <&kp>, <&kp>;
+        *           };
+        *           hs: homerow_shifts {
+        *               compatible = "zmk,behavior-hold-tap";
+        *               label = "HOMEROW_SHIFTS";
+        *               #binding-cells = <2>;
+        *               tapping-term-ms = <150>;
+        *               quick_tap_ms = <0>;
+        *               flavor = "balanced";
+        *               bindings = <&kp>, <&kp>;
+        *           };
+        *       };
+        *    //Fim
+        */
+    //Fim
+
+
 
 
     keymap {
         compatible = "zmk,keymap";
+
 
 
 
@@ -142,6 +154,7 @@
                     >;
                 };
         // Fim do Layout BASE
+
 
 
 
@@ -185,22 +198,20 @@
                         // ├───────┼─────┼─────┼─────┼─────┼─────┤                                                          ├───────┼─────┼────┼─────┼─────┼─────┤
                         // │ SHIFT |     |  ◄  |  ▼  |  ►  |ROL ▼|                                                          │       |     |    |     |     |     |
                         // ├───────┼─────┼─────┼─────┼─────┼─────┤                                                          ├───────┼─────┼────┼─────┼─────┼─────┤
-                        // │ CTRL  |     |ROL◄ |ROL ►|ESQRD|DIRTA|                                                          │       |     |    |     |     |     |
+                        // │ CTRL  |     |ROL◄ |ROL ►|     |     |                                                          │       |     |    |     |     |     |
                         // └───────┼─────┼─────┼─────┼─────┼─────┤                                                          ├───────┼─────┼────┼─────┼─────┼─────┘
-                        //         |     |MOUSE| ALT |     |     |                                                          │       |     |    |     |     |
+                        //         |     |MOUSE| ALT |ESQRD|DIRTA|                                                          │       |     |    |     |     |
                         //         └─────┴─────┴─────┴─────┴─────┘                                                          └───────┴─────┴────┴─────┴─────┘
         
                     bindings = <
                         &kp ESC    &none  &none                &mkp MB3         &none             &none              &none  &none  &none  &none  &none   &none
                         &kp TAB    &none  &mkp MB4             &mmv MOVE_UP     &mkp MB5          &msc SCRL_UP       &none  &none  &none  &none  &none   &none
                         &kp LSHFT  &none  &mmv MOVE_LEFT       &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &msc SCRL_DOWN     &none  &none  &none  &none  &none   &none
-                        &kp LCTRL  &none  &msc SCRL_LEFT       &msc SCRL_RIGHT  &mkp MB1          &mkp MB2           &none  &none  &none  &none  &none   &none
-                                   &none  &tog ESQUERDA_MOUSE  &kp LALT         &none             &none              &none  &none  &none  &none  &none
+                        &kp LCTRL  &none  &msc SCRL_LEFT       &msc SCRL_RIGHT  &none             &none              &none  &none  &none  &none  &none   &none
+                                   &none  &tog ESQUERDA_MOUSE  &kp LALT         &mkp MB1          &mkp MB2            &none  &none  &none  &none  &none
                     >;
                 };
         // Fim do Layout ESQUERDA_MOUSE
-
-
 
 
 
@@ -216,7 +227,7 @@
                         // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
                         // │       |     |    |     |     |     |               │ PG DN |  ◄  |  ▼  |  ►  |     |  ~  |
                         // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
-                        // │       |     |    |     |     |     |               │       |     |     |     |     |     |
+                        // │       |     |    |     |     |     |               │       |     |     |     | \ | |     |
                         // └───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┘
                         //         |     |    |     |     |     |               │       |     |     |     |     |
                         //         └─────┴────┴─────┴─────┴─────┘               └───────┴─────┴─────┴─────┴─────┘
@@ -225,7 +236,7 @@
                         &none   &none   &none   &none   &none   &none         &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3 &kp EQUAL
                         &none   &none   &none   &none   &none   &none         &kp PG_UP   &kp BSPC      &kp UP        &kp DEL       &none        &kp MINUS
                         &none   &none   &none   &none   &none   &none         &kp PG_DN   &kp LEFT      &kp DOWN      &kp RIGHT     &none        &kp TILDE
-                        &none   &none   &none   &none   &none   &none         &none       &none         &none         &none         &none        &none
+                        &none   &none   &none   &none   &none   &none         &none       &none         &none         &none         &kp BSLH     &none
                                 &none   &none   &none   &none   &none         &none       &none         &none         &none         &none
                      >;
                 };
@@ -259,9 +270,6 @@
                      >;
                 };
         // Fim do Layout DIREITA_Numerico
-
-
-
 
 
 
