@@ -1,85 +1,88 @@
 //Inicio das incluçoes
-    #include <behaviors.dtsi>
-    #include <dt-bindings/zmk/bt.h>
-    #include <dt-bindings/zmk/ext_power.h>
-    #include <dt-bindings/zmk/keys.h>
-    #include <dt-bindings/zmk/pointing.h>
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/pointing.h>
+
 //Fim das incluçoes
-
-
-
-
 //Inicio das definiçoes de configurações
-        //MOUSE
-            #define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // padrão: 600
-            #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // padrão: 10
+//MOUSE
+
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // padrão: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // padrão: 10
+
 //Fim das definiçoes de configurações
-
-
-
-
 //Inicio das definiçoes das camadas
-    #define BASE 0
-    #define ESQUERDA 1
-    #define ESQUERDA_MOUSE 2
-    #define DIREITA 3
-    #define DIREITA_Num 4
-    #define AMBAS 5
+
+#define BASE 0
+#define ESQUERDA 1
+#define ESQUERDA_MOUSE 2
+#define DIREITA 3
+#define DIREITA_Num 4
+#define AMBAS 5
+
 //Fim das definiçoes das camadas
-
-
-
-
 //Inicio dos comportamentos de teclas
+//MT = MOD-TAP, se eu tocar o SHIFT pelo tempo menor que delimitei, ele vira o caps_word, caso eu continue pressionando o shift, ele se mantem como shift 
 
+&mt {
+    flavor = "tap-preferred";
+    tapping_term_ms = <200>;
+};
 
-    //MT = MOD-TAP, se eu tocar o SHIFT pelo tempo menor que delimitei, ele vira o caps_word, caso eu continue pressionando o shift, ele se mantem como shift 
-    &mt {
-        flavor = "tap-preferred";
-        tapping_term_ms = <200>;
-    };
+//SK = 
 
+&sk {
+    release-after-ms = <2000>;
+    quick-release;
+};
 
-    //SK = 
-    &sk {
-     release-after-ms = <2000>;
-     quick-release;
-    };
 //Fim dos comportamentos de teclas
-
-
-
 
 / {
     // Ative a camada 'AMBAS' pressionando DIREITA e ESQUERDA
-        conditional_layers {
-            compatible = "zmk,conditional-layers";
 
-            AMBAS_layer {
-                if-layers = <ESQUERDA  DIREITA>;
-                then-layer = <AMBAS>;
-            };
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        AMBAS_layer {
+            if-layers = <ESQUERDA  DIREITA>;
+            then-layer = <AMBAS>;
         };
+    };
+
     //Fim
-
-
-
-
     //Inicio  Combos
-        combos {
-            compatible = "zmk,combos";
 
-            Backspace {
-                timeout-ms = <30>;
-                bindings = <&kp BACKSPACE>;
-                key-positions = <52 53>;
-            };
+    combos {
+        compatible = "zmk,combos";
 
-            combo_caps {
-                timeout-ms = <30>;
-    	        key-positions = <0 13>;
-                bindings = <&caps_word>;
-            };
+        Backspace {
+            timeout-ms = <30>;
+            bindings = <&kp BACKSPACE>;
+            key-positions = <22 21>;
+        };
+
+        CapsLock {
+            timeout-ms = <30>;
+            key-positions = <12 24>;
+            bindings = <&caps_word>;
+        };
+
+        Sen1 {
+            bindings = <&Sen1>;
+            key-positions = <17 16 15>;
+            layers = <1>;
+        };
+
+        Enter {
+            bindings = <&kp ENTER>;
+            key-positions = <18 19>;
+        };
+
         /*
         *           lalt {
         *               timeout-ms = <20>;
@@ -88,14 +91,11 @@
         *        	    layers = <ESQUERDA>; 
         *           };
         */
-        };
+    };
+
     //Fim
-
-
-
-
     //Inicio  dos comportamentos
-        /*
+    /*
         *       behaviors {
         *           hm: homerow_mods {
         *               compatible = "zmk,behavior-hold-tap";
@@ -120,184 +120,182 @@
         */
     //Fim
 
+    macros {
+        Sen1: Sen1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&Sen1 &kp AT &kp LS(K) &kp O &kp LS(D) &kp A &kp UNDER &kp LS(M) &kp A &kp S &kp LS(T) &kp E &kp R &kp EXCL &kp N6 &kp N4 &kp N2 &kp N8 &kp N9 &kp N0>;
 
-
+            label = "SEN1";
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
 
-
-
-
         // Inicio do Layout BASE
-                default_layer {
-                    display-name = "BASE";
 
-                        // ┌───────┬─────┬─────┬─────┬─────┬─────┐                                        ┌─────┬─────┬────┬─────┬─────┬─────┐
-                        // │ ESC   │  1  |  2  |  3  |  4  |  5  |                                        │  6  │  7  |  8 |  9  |  0  |PG UP|
-                        // ├───────┼─────┼─────┼─────┼─────┼─────┤                                        ├─────┼─────┼────┼─────┼─────┼─────┤
-                        // │ TAB   |  Q  |  W  |  E  |  R  |  T  |                                        │  Y  |  U  |  I |  O  |  P  |PG DN|
-                        // ├───────┼─────┼─────┼─────┼─────┼─────┤                                        ├─────┼─────┼────┼─────┼─────┼─────┤
-                        // │ SHIFT |  A  |  S  |  D  |  F  |  G  |                                        │  H  |  J  |  K |  L  | ; : |' "" |
-                        // ├───────┼─────┼─────┼─────┼─────┼─────┤                                        ├─────┼─────┼────┼─────┼─────┼─────┤
-                        // │ CTRL  |  Z  |  X  |  C  |  V  |  B  |                                        │  N  |  M  | , <| . > | / ? |SHIFT|
-                        // └───────┼─────┼─────┼─────┼─────┼─────┤                                        ├─────┼─────┼────┼─────┼─────┼─────┘
-                        //         | WIN |MOUSE| ALT |ESQRD|SPAÇO|                                        │SPAÇO|DIRTA|CTRL| ALT |DTNUM|
-                        //         └─────┴─────┴─────┴─────┴─────┘                                        └─────┴─────┴────┴─────┴─────┘
+        default_layer {
+            display-name = "BASE";
 
-                    bindings = <
-                        &kp ESC    &kp N1    &kp N2               &kp N3    &kp N4        &kp N5          &kp N6     &kp N7       &kp N8     &kp N9    &kp N0    &kp PG_UP
-                        &kp TAB    &kp Q     &kp W                &kp E     &kp R         &kp T           &kp Y      &kp U        &kp I      &kp O     &kp P     &kp PG_DN
-                        &kp LSHFT  &kp A     &kp S                &kp D     &kp F         &kp G           &kp H      &kp J        &kp K      &kp L     &kp SEMI  &kp SQT
-                        &kp LCTRL  &kp Z     &kp X                &kp C     &kp V         &kp B           &kp N      &kp M        &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-                                   &kp LGUI  &tog ESQUERDA_MOUSE  &kp LALT  &mo ESQUERDA  &kp SPACE       &kp SPACE  &mo DIREITA  &kp RCTRL  &kp RALT  &tog DIREITA_Num 
-                    >;
-                };
+            // ┌───────┬─────┬─────┬─────┬─────┬─────┐                                        ┌─────┬─────┬────┬─────┬─────┬─────┐
+            // │ ESC   │  1  |  2  |  3  |  4  |  5  |                                        │  6  │  7  |  8 |  9  |  0  |PG UP|
+            // ├───────┼─────┼─────┼─────┼─────┼─────┤                                        ├─────┼─────┼────┼─────┼─────┼─────┤
+            // │ TAB   |  Q  |  W  |  E  |  R  |  T  |                                        │  Y  |  U  |  I |  O  |  P  |PG DN|
+            // ├───────┼─────┼─────┼─────┼─────┼─────┤                                        ├─────┼─────┼────┼─────┼─────┼─────┤
+            // │ SHIFT |  A  |  S  |  D  |  F  |  G  |                                        │  H  |  J  |  K |  L  | ; : |' "" |
+            // ├───────┼─────┼─────┼─────┼─────┼─────┤                                        ├─────┼─────┼────┼─────┼─────┼─────┤
+            // │ CTRL  |  Z  |  X  |  C  |  V  |  B  |                                        │  N  |  M  | , <| . > | / ? |SHIFT|
+            // └───────┼─────┼─────┼─────┼─────┼─────┤                                        ├─────┼─────┼────┼─────┼─────┼─────┘
+            //         | WIN |MOUSE| ALT |ESQRD|SPAÇO|                                        │SPAÇO|DIRTA|CTRL| ALT |DTNUM|
+            //         └─────┴─────┴─────┴─────┴─────┘                                        └─────┴─────┴────┴─────┴─────┘
+
+            bindings = <
+&kp ESC    &kp N1  &kp N2  &kp N3    &kp N4               &kp N5                                        &kp N6       &kp N7     &kp N8     &kp N9            &kp N0    &kp PG_UP
+&kp TAB    &kp Q   &kp W   &kp E     &kp R                &kp T                                         &kp Y        &kp U      &kp I      &kp O             &kp P     &kp PG_DN
+&kp LSHFT  &kp A   &kp S   &kp D     &kp F                &kp G                                         &kp H        &kp J      &kp K      &kp L             &kp SEMI  &kp SQT
+&kp LCTRL  &kp Z   &kp X   &kp C     &kp V                &kp B                                         &kp N        &kp M      &kp COMMA  &kp DOT           &kp FSLH  &kp RSHFT
+                           &kp LGUI  &tog ESQUERDA_MOUSE  &kp LALT  &mo ESQUERDA  &kp SPACE  &kp SPACE  &mo DIREITA  &kp RCTRL  &kp RALT   &tog DIREITA_Num
+            >;
+        };
+
         // Fim do Layout BASE
-
-
-
-
         // Inicio do Layout ESQUERDA
-                ESQUERDA_layer {
-                    display-name = "ESQUERDA";
 
-                        // ┌───────┬─────┬────┬─────┬─────┬─────┐                                   ┌───────┬─────┬────┬─────┬─────┬─────┐
-                        // │       │     | F2 | F3  | F4  | F5  |                                   │       │     |    |     |     |     |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤                                   ├───────┼─────┼────┼─────┼─────┼─────┤
-                        // │ CAPS  | ►⫼  |    | ◄)) |     |  ↲  |                                   │       |     |    |     |     |     |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤                                   ├───────┼─────┼────┼─────┼─────┼─────┤
-                        // │ SHIFT |  «  |  » | ◄)  |  {  |  }  |                                   │       |     |    |     |     |     |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤                                   ├───────┼─────┼────┼─────┼─────┼─────┤
-                        // │ CTRL  |  «« | »» | ◄x  |  [  |  ]  |                                   │       |     |    |     |     |     |
-                        // └───────┼─────┼────┼─────┼─────┼─────┤                                   ├───────┼─────┼────┼─────┼─────┼─────┘
-                        //         |     |    |     |     |     |                                   │       |     |    |     |     |
-                        //         └─────┴────┴─────┴─────┴─────┘                                   └───────┴─────┴────┴─────┴─────┘
+        ESQUERDA_layer {
+            display-name = "ESQUERDA";
 
-                    bindings = <
-                        &none      &none         &kp F2        &kp F3 &kp F4 &kp F5    &none        &none  &none  &none  &none   &none
-                        &kp CLCK   &kp C_PP      &none         &kp C_VOL_UP  &none     &kp RET      &none  &none  &none  &none  &none   &none
-                        &kp LSHFT  &kp C_PREV    &kp C_NEXT    &kp C_VOL_DN  &kp LBRC  &kp RBRC     &none  &none  &none  &none  &none   &none
-                        &kp LCTRL  &kp C_RW      &kp C_FF      &kp C_MUTE    &kp LBKT  &kp RBKT     &none  &none  &none  &none  &none   &none
-                                   &none         &none         &none         &none     &none        &none  &none  &none  &none  &none
-                    >;
-                };
+            // ┌───────┬─────┬────┬─────┬─────┬─────┐                                   ┌───────┬─────┬────┬─────┬─────┬─────┐
+            // │       │     | F2 | F3  | F4  | F5  |                                   │       │     |    |     |     |     |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤                                   ├───────┼─────┼────┼─────┼─────┼─────┤
+            // │ CAPS  | ►⫼  |    | ◄)) |     |  ↲  |                                   │       |     |    |     |     |     |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤                                   ├───────┼─────┼────┼─────┼─────┼─────┤
+            // │ SHIFT |  «  |  » | ◄)  |  {  |  }  |                                   │       |     |    |     |     |     |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤                                   ├───────┼─────┼────┼─────┼─────┼─────┤
+            // │ CTRL  |  «« | »» | ◄x  |  [  |  ]  |                                   │       |     |    |     |     |     |
+            // └───────┼─────┼────┼─────┼─────┼─────┤                                   ├───────┼─────┼────┼─────┼─────┼─────┘
+            //         |     |    |     |     |     |                                   │       |     |    |     |     |
+            //         └─────┴────┴─────┴─────┴─────┘                                   └───────┴─────┴────┴─────┴─────┘
+
+            bindings = <
+&none      &none       &kp F2      &kp F3        &kp F4    &kp F5                         &none  &none  &none  &none  &none  &none
+&kp CLCK   &kp C_PP    &none       &kp C_VOL_UP  &none     &kp RET                        &none  &none  &none  &none  &none  &none
+&kp LSHFT  &kp C_PREV  &kp C_NEXT  &kp C_VOL_DN  &kp LBRC  &kp RBRC                       &none  &none  &none  &none  &none  &none
+&kp LCTRL  &kp C_RW    &kp C_FF    &kp C_MUTE    &kp LBKT  &kp RBKT                       &none  &none  &none  &none  &none  &none
+                                   &none         &none     &none     &none  &none  &none  &none  &none  &none  &none
+            >;
+        };
+
         // Fim do Layout ESQUERDA
-
-
-
-
         // Inicio do Layout ESQUERDA_MOUSE
-                ESQUERDA_MOUSE_layer {
-                    display-name = "ESQUERDA_MOUSE";
-        
-                        // ┌───────┬─────┬─────┬─────┬─────┬─────┐                                                          ┌───────┬─────┬────┬─────┬─────┬─────┐
-                        // │ ESC   │     |     |MEIO |     |     |                                                          │       │     |    |     |     |     |
-                        // ├───────┼─────┼─────┼─────┼─────┼─────┤                                                          ├───────┼─────┼────┼─────┼─────┼─────┤
-                        // │ TAB   |     | B4  |  ▲  |  B5 |ROL ▲|                                                          │       |     |    |     |     |     |
-                        // ├───────┼─────┼─────┼─────┼─────┼─────┤                                                          ├───────┼─────┼────┼─────┼─────┼─────┤
-                        // │ SHIFT |     |  ◄  |  ▼  |  ►  |ROL ▼|                                                          │       |     |    |     |     |     |
-                        // ├───────┼─────┼─────┼─────┼─────┼─────┤                                                          ├───────┼─────┼────┼─────┼─────┼─────┤
-                        // │ CTRL  |     |ROL◄ |ROL ►|     |     |                                                          │       |     |    |     |     |     |
-                        // └───────┼─────┼─────┼─────┼─────┼─────┤                                                          ├───────┼─────┼────┼─────┼─────┼─────┘
-                        //         |     |MOUSE| ALT |ESQRD|DIRTA|                                                          │       |     |    |     |     |
-                        //         └─────┴─────┴─────┴─────┴─────┘                                                          └───────┴─────┴────┴─────┴─────┘
-        
-                    bindings = <
-                        &kp ESC    &none  &none                &mkp MB3         &none             &none              &none  &none  &none  &none  &none   &none
-                        &kp TAB    &none  &mkp MB4             &mmv MOVE_UP     &mkp MB5          &msc SCRL_UP       &none  &none  &none  &none  &none   &none
-                        &kp LSHFT  &none  &mmv MOVE_LEFT       &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &msc SCRL_DOWN     &none  &none  &none  &none  &none   &none
-                        &kp LCTRL  &none  &msc SCRL_LEFT       &msc SCRL_RIGHT  &none             &none              &none  &none  &none  &none  &none   &none
-                                   &none  &tog ESQUERDA_MOUSE  &kp LALT         &mkp MB1          &mkp MB2            &none  &none  &none  &none  &none
-                    >;
-                };
+
+        ESQUERDA_MOUSE_layer {
+            display-name = "ESQUERDA_MOUSE";
+
+            // ┌───────┬─────┬─────┬─────┬─────┬─────┐                                                          ┌───────┬─────┬────┬─────┬─────┬─────┐
+            // │ ESC   │     |     |MEIO |     |     |                                                          │       │     |    |     |     |     |
+            // ├───────┼─────┼─────┼─────┼─────┼─────┤                                                          ├───────┼─────┼────┼─────┼─────┼─────┤
+            // │ TAB   |     | B4  |  ▲  |  B5 |ROL ▲|                                                          │       |     |    |     |     |     |
+            // ├───────┼─────┼─────┼─────┼─────┼─────┤                                                          ├───────┼─────┼────┼─────┼─────┼─────┤
+            // │ SHIFT |     |  ◄  |  ▼  |  ►  |ROL ▼|                                                          │       |     |    |     |     |     |
+            // ├───────┼─────┼─────┼─────┼─────┼─────┤                                                          ├───────┼─────┼────┼─────┼─────┼─────┤
+            // │ CTRL  |     |ROL◄ |ROL ►|     |     |                                                          │       |     |    |     |     |     |
+            // └───────┼─────┼─────┼─────┼─────┼─────┤                                                          ├───────┼─────┼────┼─────┼─────┼─────┘
+            //         |     |MOUSE| ALT |ESQRD|DIRTA|                                                          │       |     |    |     |     |
+            //         └─────┴─────┴─────┴─────┴─────┘                                                          └───────┴─────┴────┴─────┴─────┘
+
+            bindings = <
+&kp ESC    &none  &none           &mkp MB3         &none                &none                                      &none  &none  &none  &none  &none  &none
+&kp TAB    &none  &mkp MB4        &mmv MOVE_UP     &mkp MB5             &msc SCRL_UP                               &none  &none  &none  &none  &none  &none
+&kp LSHFT  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT      &msc SCRL_DOWN                             &none  &none  &none  &none  &none  &none
+&kp LCTRL  &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none                &none                                      &none  &none  &none  &none  &none  &none
+                                  &none            &tog ESQUERDA_MOUSE  &kp LALT        &mkp MB1  &mkp MB2  &none  &none  &none  &none  &none
+            >;
+        };
+
         // Fim do Layout ESQUERDA_MOUSE
-
-
-
-
         // Inicio do Layout DIREITAL
-                DIREITA_layer {
-                    display-name = "DIREITA";
 
-                        // ┌───────┬─────┬────┬─────┬─────┬─────┐               ┌───────┬─────┬─────┬─────┬─────┬─────┐
-                        // │       │     |    |     |     |     |               │BT CLR │ BT1 | BT2 | BT3 | BT4 | = + |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
-                        // │       |     |    |     |     |     |               │ PG UP |  ←  |  ▲  | DEL |     |  -  |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
-                        // │       |     |    |     |     |     |               │ PG DN |  ◄  |  ▼  |  ►  |     |  ~  |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
-                        // │       |     |    |     |     |     |               │       |     |     |     | \ | |     |
-                        // └───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┘
-                        //         |     |    |     |     |     |               │       |     |     |     |     |
-                        //         └─────┴────┴─────┴─────┴─────┘               └───────┴─────┴─────┴─────┴─────┘
+        DIREITA_layer {
+            display-name = "DIREITA";
 
-                    bindings = <
-                        &none   &none   &none   &none   &none   &none         &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3 &kp EQUAL
-                        &none   &none   &none   &none   &none   &none         &kp PG_UP   &kp BSPC      &kp UP        &kp DEL       &none        &kp MINUS
-                        &none   &none   &none   &none   &none   &none         &kp PG_DN   &kp LEFT      &kp DOWN      &kp RIGHT     &none        &kp TILDE
-                        &none   &none   &none   &none   &none   &none         &none       &none         &none         &none         &kp BSLH     &none
-                                &none   &none   &none   &none   &none         &none       &none         &none         &none         &none
-                     >;
-                };
+            // ┌───────┬─────┬────┬─────┬─────┬─────┐               ┌───────┬─────┬─────┬─────┬─────┬─────┐
+            // │       │     |    |     |     |     |               │BT CLR │ BT1 | BT2 | BT3 | BT4 | = + |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
+            // │       |     |    |     |     |     |               │ PG UP |  ←  |  ▲  | DEL |     |  -  |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
+            // │       |     |    |     |     |     |               │ PG DN |  ◄  |  ▼  |  ►  |     |  ~  |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
+            // │       |     |    |     |     |     |               │       |     |     |     | \ | |     |
+            // └───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┘
+            //         |     |    |     |     |     |               │       |     |     |     |     |
+            //         └─────┴────┴─────┴─────┴─────┘               └───────┴─────┴─────┴─────┴─────┘
+
+            bindings = <
+&none  &none  &none  &none  &none  &none                       &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &kp EQUAL
+&none  &none  &none  &none  &none  &none                       &kp PG_UP   &kp BSPC      &kp UP        &kp DEL       &none         &kp MINUS
+&none  &none  &none  &none  &none  &none                       &kp PG_DN   &kp LEFT      &kp DOWN      &kp RIGHT     &none         &kp TILDE
+&none  &none  &none  &none  &none  &none                       &none       &none         &none         &none         &kp BSLH      &none
+                     &none  &none  &none  &none  &none  &none  &none       &none         &none         &none
+            >;
+        };
+
         // Fim do Layout DIREITA
-
-
-
-
         // Inicio do Layout DIREITA_Numerico
-                DIREITA_Num_layer {
-                    display-name = "DIREITA_Num";
 
-                        // ┌───────┬─────┬────┬─────┬─────┬─────┐               ┌───────┬─────┬─────┬─────┬─────┬─────┐
-                        // │       │     |    |     |     |     |               │   ←   │  7  |  8  |  9  | CLR |  +  |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
-                        // │       |     |    |     |     |     |               │       |  4  |  5  |  6  |     |  -  |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
-                        // │       |     |    |     |     |     |               │       |  1  |  2  |  3  |     |  *  |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
-                        // │       |     |    |     |     |     |               │       |  0  |  ,  |  .  |  =  |  /  |
-                        // └───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┘
-                        //         |     |    |     |     |     |               │       |     |     |     |     |
-                        //         └─────┴────┴─────┴─────┴─────┘               └───────┴─────┴─────┴─────┴─────┘
+        DIREITA_Num_layer {
+            display-name = "DIREITA_Num";
 
-                    bindings = <
-                        &none   &none   &none   &none   &none   &none         &kp BSPC  &kp KP_N7  &kp KP_N8     &kp KP_N9    &kp KP_CLEAR  &kp KP_PLUS
-                        &none   &none   &none   &none   &none   &none         &none     &kp KP_N4  &kp KP_N5     &kp KP_N6    &none         &kp KP_MINUS
-                        &none   &none   &none   &none   &none   &none         &none     &kp KP_N1  &kp KP_N2     &kp KP_N3    &none         &kp KP_MULTIPLY
-                        &none   &none   &none   &none   &none   &none         &none     &kp KP_N0  &kp KP_COMMA  &kp KP_DOT   &kp KP_EQUAL  &kp KP_DIVIDE
-                                &none   &none   &none   &none   &none         &none     &none      &none         &none        &tog DIREITA_Num
-                     >;
-                };
+            // ┌───────┬─────┬────┬─────┬─────┬─────┐               ┌───────┬─────┬─────┬─────┬─────┬─────┐
+            // │       │     |    |     |     |     |               │   ←   │  7  |  8  |  9  | CLR |  +  |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
+            // │       |     |    |     |     |     |               │       |  4  |  5  |  6  |     |  -  |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
+            // │       |     |    |     |     |     |               │       |  1  |  2  |  3  |     |  *  |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┤
+            // │       |     |    |     |     |     |               │       |  0  |  ,  |  .  |  =  |  /  |
+            // └───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼─────┼─────┼─────┼─────┘
+            //         |     |    |     |     |     |               │       |     |     |     |     |
+            //         └─────┴────┴─────┴─────┴─────┘               └───────┴─────┴─────┴─────┴─────┘
+
+            bindings = <
+&none  &none  &none  &none  &none  &none                       &kp BSPC  &kp KP_N7  &kp KP_N8     &kp KP_N9         &kp KP_CLEAR  &kp KP_PLUS
+&none  &none  &none  &none  &none  &none                       &none     &kp KP_N4  &kp KP_N5     &kp KP_N6         &none         &kp KP_MINUS
+&none  &none  &none  &none  &none  &none                       &none     &kp KP_N1  &kp KP_N2     &kp KP_N3         &none         &kp KP_MULTIPLY
+&none  &none  &none  &none  &none  &none                       &none     &kp KP_N0  &kp KP_COMMA  &kp KP_DOT        &kp KP_EQUAL  &kp KP_DIVIDE
+                     &none  &none  &none  &none  &none  &none  &none     &none      &none         &tog DIREITA_Num
+            >;
+        };
+
         // Fim do Layout DIREITA_Numerico
-
-
-
-
         // Inicio do Layout AMBAS (NÃO ESTA FUNCIONANDO)
-                AMBAS_layer {
-                    display-name = "AMBAS";
-        
-                        // ┌───────┬─────┬────┬─────┬─────┬─────┐               ┌───────┬─────┬────┬─────┬─────┬─────┐
-                        // │       │     |    |     |     |     |               │       │     |    |     |     |     |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼────┼─────┼─────┼─────┤
-                        // │       |     |    |     |     |     |               │       |     |    |     |     |     |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼────┼─────┼─────┼─────┤
-                        // │       |     |    |     |     |     |               │       |     |    |     |     |     |
-                        // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼────┼─────┼─────┼─────┤
-                        // │       |     |    |     |     |     |               │       |     |    |     |     |     |
-                        // └───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼────┼─────┼─────┼─────┘
-                        //         |     |    |     |     |     |               │       |     |    |     |     |
-                        //         └─────┴────┴─────┴─────┴─────┘               └───────┴─────┴────┴─────┴─────┘
-        
-                    bindings = <
-                        &none  &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
-                        &none  &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
-                        &none  &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
-                        &none  &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
-                               &none  &none  &none  &none  &none      &none  &none  &none  &none  &none
-                    >;
-                };
+
+        AMBAS_layer {
+            display-name = "AMBAS";
+
+            // ┌───────┬─────┬────┬─────┬─────┬─────┐               ┌───────┬─────┬────┬─────┬─────┬─────┐
+            // │       │     |    |     |     |     |               │       │     |    |     |     |     |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼────┼─────┼─────┼─────┤
+            // │       |     |    |     |     |     |               │       |     |    |     |     |     |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼────┼─────┼─────┼─────┤
+            // │       |     |    |     |     |     |               │       |     |    |     |     |     |
+            // ├───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼────┼─────┼─────┼─────┤
+            // │       |     |    |     |     |     |               │       |     |    |     |     |     |
+            // └───────┼─────┼────┼─────┼─────┼─────┤               ├───────┼─────┼────┼─────┼─────┼─────┘
+            //         |     |    |     |     |     |               │       |     |    |     |     |
+            //         └─────┴────┴─────┴─────┴─────┘               └───────┴─────┴────┴─────┴─────┘
+
+            bindings = <
+&none  &none  &none  &none  &none  &none                       &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none                       &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none                       &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none                       &none  &none  &none  &none  &none  &none
+                     &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+            >;
+        };
+
         // Fim do Layout AMBAS
     };
 };
