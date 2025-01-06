@@ -74,7 +74,7 @@
 
         Sen1 {
             bindings = <&Sen1>;
-            key-positions = <17 16 15>;
+            key-positions = <17 16>;
             layers = <1>;
         };
 
@@ -126,7 +126,7 @@
             #binding-cells = <0>;
             bindings =
                 <&macro_tap>,
-                <&Sen1 &kp AT &kp LS(K) &kp O &kp LS(D) &kp A &kp UNDER &kp LS(M) &kp A &kp S &kp LS(T) &kp E &kp R &kp EXCL &kp N6 &kp N4 &kp N2 &kp N8 &kp N9 &kp N0>;
+                <&kp AT &kp LS(K) &kp O &kp LS(D) &kp A &kp UNDER &kp LS(M) &kp A &kp S &kp LS(T) &kp E &kp R &kp EXCL &kp N6 &kp N4 &kp N2 &kp N8 &kp N9 &kp N0>;
 
             label = "SEN1";
         };
