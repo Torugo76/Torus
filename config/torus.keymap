@@ -131,7 +131,7 @@
             layers = <3>;
         };
 
-        Win+V {
+        WinV {
             bindings = <&kp LG(V)>;
             key-positions = <37 40>;
             layers = <1>;
@@ -153,15 +153,6 @@
             key-positions = <17 16>;
             layers = <1>;
         };
-
-        /*
-        *           lalt {
-        *               timeout-ms = <20>;
-        *        	    key-positions = <8 9 19>;
-        *               bindings = <&kp LALT>; 
-        *        	    layers = <ESQUERDA>; 
-        *           };
-        */
     };
 
     //Fim
