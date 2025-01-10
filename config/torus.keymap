@@ -28,10 +28,7 @@
 //Inicio dos comportamentos de teclas
 //MT = MOD-TAP, se eu tocar o SHIFT pelo tempo menor que delimitei, ele vira o caps_word, caso eu continue pressionando o shift, ele se mantem como shift 
 
-&mt {
-    flavor = "tap-preferred";
-    tapping_term_ms = <200>;
-};
+&mt { tapping_term_ms = <200>; };
 
 //SK = 
 
@@ -153,6 +150,11 @@
             key-positions = <17 16>;
             layers = <1>;
         };
+
+        tab {
+            bindings = <&kp TAB>;
+            key-positions = <41 40>;
+        };
     };
 
     //Fim
@@ -215,11 +217,11 @@
             //         └─────┴─────┴─────┴─────┴─────┘                                        └─────┴─────┴────┴─────┴─────┘
 
             bindings = <
-&none  &kp N1          &kp N2          &kp N3            &kp N4               &kp N5                                        &kp N6       &kp N7               &kp N8        &kp N9            &kp N0              &kp PG_UP
-&none  &kp Q           &kp W           &kp E             &kp R                &kp T                                         &kp Y        &kp U                &kp I         &kp O             &kp P               &kp PG_DN
-&none  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_SHIFT D  &mt LEFT_CONTROL F   &kp G                                         &kp H        &mt RIGHT_CONTROL J  &mt RSHIFT K  &mt RIGHT_ALT L   &mt RIGHT_GUI SEMI  &kp SQT
-&none  &kp Z           &kp X           &kp C             &kp V                &kp B                                         &kp N        &kp M                &kp COMMA     &kp DOT           &kp FSLH            &none
-                                       &none             &tog ESQUERDA_MOUSE  &kp LALT  &mo ESQUERDA  &kp SPACE  &kp SPACE  &mo DIREITA  &none                &none         &tog DIREITA_Num
+&none  &kp N1          &kp N2          &kp N3            &kp N4               &kp N5                                                 &kp N6       &kp N7               &kp N8        &kp N9            &kp N0              &kp PG_UP
+&none  &kp Q           &kp W           &kp E             &kp R                &kp T                                                  &kp Y        &kp U                &kp I         &kp O             &kp P               &kp PG_DN
+&none  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_SHIFT D  &mt LEFT_CONTROL F   &kp G                                                  &kp H        &mt RIGHT_CONTROL J  &mt RSHIFT K  &mt RIGHT_ALT L   &mt RIGHT_GUI SEMI  &kp SQT
+&none  &kp Z           &kp X           &kp C             &kp V                &kp B                                                  &kp N        &kp M                &kp COMMA     &kp DOT           &kp FSLH            &none
+                                       &none             &tog ESQUERDA_MOUSE  &kp LALT  &mo ESQUERDA  &mt LEFT_ALT SPACE  &kp SPACE  &mo DIREITA  &none                &none         &tog DIREITA_Num
             >;
         };
 
