@@ -215,11 +215,11 @@
             //         └─────┴─────┴─────┴─────┴─────┘                                        └─────┴─────┴────┴─────┴─────┘
 
             bindings = <
-&kp ESC    &kp N1          &kp N2          &kp N3            &kp N4               &kp N5                                        &kp N6       &kp N7               &kp N8        &kp N9            &kp N0              &kp PG_UP
-&kp TAB    &kp Q           &kp W           &kp E             &kp R                &kp T                                         &kp Y        &kp U                &kp I         &kp O             &kp P               &kp PG_DN
-&kp LSHFT  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_SHIFT D  &mt LEFT_CONTROL F   &kp G                                         &kp H        &mt RIGHT_CONTROL J  &mt RSHIFT K  &mt RIGHT_ALT L   &mt RIGHT_GUI SEMI  &kp SQT
-&kp LCTRL  &kp Z           &kp X           &kp C             &kp V                &kp B                                         &kp N        &kp M                &kp COMMA     &kp DOT           &kp FSLH            &kp RSHFT
-                                           &kp LGUI          &tog ESQUERDA_MOUSE  &kp LALT  &mo ESQUERDA  &kp SPACE  &kp SPACE  &mo DIREITA  &kp RCTRL            &kp RALT      &tog DIREITA_Num
+&none  &kp N1          &kp N2          &kp N3            &kp N4               &kp N5                                        &kp N6       &kp N7               &kp N8        &kp N9            &kp N0              &kp PG_UP
+&none  &kp Q           &kp W           &kp E             &kp R                &kp T                                         &kp Y        &kp U                &kp I         &kp O             &kp P               &kp PG_DN
+&none  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_SHIFT D  &mt LEFT_CONTROL F   &kp G                                         &kp H        &mt RIGHT_CONTROL J  &mt RSHIFT K  &mt RIGHT_ALT L   &mt RIGHT_GUI SEMI  &kp SQT
+&none  &kp Z           &kp X           &kp C             &kp V                &kp B                                         &kp N        &kp M                &kp COMMA     &kp DOT           &kp FSLH            &none
+                                       &none             &tog ESQUERDA_MOUSE  &kp LALT  &mo ESQUERDA  &kp SPACE  &kp SPACE  &mo DIREITA  &none                &none         &tog DIREITA_Num
             >;
         };
 
@@ -242,11 +242,11 @@
             //         └─────┴────┴─────┴─────┴─────┘                                   └───────┴─────┴────┴─────┴─────┘
 
             bindings = <
-&none      &none            &kp F2      &kp F3        &kp F4    &kp F5                         &none  &none  &none  &none  &none  &none
-&kp CLCK   &kp LA(TAB)      &none       &kp C_VOL_UP  &none     &none                          &none  &none  &none  &none  &none  &none
-&kp LSHFT  &kp LA(LS(TAB))  &kp C_NEXT  &kp C_VOL_DN  &kp LBRC  &kp RBRC                       &none  &none  &none  &none  &none  &none
-&kp LCTRL  &kp C_RW         &kp C_FF    &kp C_MUTE    &kp LBKT  &kp RBKT                       &none  &none  &none  &none  &none  &none
-                                        &none         &none     &none     &none  &none  &none  &none  &none  &none  &none
+&none  &none     &kp F2      &kp F3        &kp F4    &kp F5                         &none  &none  &none  &none  &none  &none
+&none  &none     &none       &kp C_VOL_UP  &none     &none                          &none  &none  &none  &none  &none  &none
+&none  &none     &kp C_NEXT  &kp C_VOL_DN  &kp LBRC  &kp RBRC                       &none  &none  &none  &none  &none  &none
+&none  &kp C_RW  &kp C_FF    &kp C_MUTE    &kp LBKT  &kp RBKT                       &none  &none  &none  &none  &none  &none
+                             &none         &none     &none     &none  &none  &none  &none  &none  &none  &none
             >;
         };
 
