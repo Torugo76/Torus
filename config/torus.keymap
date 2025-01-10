@@ -8,6 +8,9 @@
 #include <dt-bindings/zmk/pointing.h>
 
 //Fim das incluçoes
+
+
+
 //Inicio das definiçoes de configurações
 //MOUSE
 
@@ -15,6 +18,8 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // padrão: 10
 
 //Fim das definiçoes de configurações
+
+
 //Inicio das definiçoes das camadas
 
 #define BASE 0
@@ -25,10 +30,19 @@
 #define AMBAS 5
 
 //Fim das definiçoes das camadas
+
+
 //Inicio dos comportamentos de teclas
+
+
 //MT = MOD-TAP, se eu tocar o SHIFT pelo tempo menor que delimitei, ele vira o caps_word, caso eu continue pressionando o shift, ele se mantem como shift 
 
-quick-tap-ms = <100>;};
+&mt {
+    flavor = "tap-preferred";
+    tapping-term-ms = <250>;
+    require-prior-idle-ms = <125>;
+    quick-tap-ms = <100>;
+};
 
 //SK = 
 
@@ -37,11 +51,6 @@ quick-tap-ms = <100>;};
     quick-release;
 };
 
-&mt {
-    flavor = "tap-preferred";
-    tapping-term-ms = <250>;
-    require-prior-idle-ms = <125>;
-};
 
 //Fim dos comportamentos de teclas
 
@@ -158,32 +167,8 @@ quick-tap-ms = <100>;};
     };
 
     //Fim
-    //Inicio  dos comportamentos
-    /*
-        *       behaviors {
-        *           hm: homerow_mods {
-        *               compatible = "zmk,behavior-hold-tap";
-        *               label = "HOMEROW_MODS";
-        *               #binding-cells = <2>;
-        *               tapping-term-ms = <200>;
-        *               quick_tap_ms = <0>;
-        *               flavor = "tap-preferred";
-        *               bindings = <&kp>, <&kp>;
-        *           };
-        *           hs: homerow_shifts {
-        *               compatible = "zmk,behavior-hold-tap";
-        *               label = "HOMEROW_SHIFTS";
-        *               #binding-cells = <2>;
-        *               tapping-term-ms = <150>;
-        *               quick_tap_ms = <0>;
-        *               flavor = "balanced";
-        *               bindings = <&kp>, <&kp>;
-        *           };
-        *       };
-        *    //Fim
-        */
-    //Fim
 
+    //inicio macro
     macros {
         Sen1: Sen1 {
             compatible = "zmk,behavior-macro";
@@ -195,6 +180,8 @@ quick-tap-ms = <100>;};
             label = "SEN1";
         };
     };
+    //fim macro
+
 
     keymap {
         compatible = "zmk,keymap";
