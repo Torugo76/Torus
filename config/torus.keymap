@@ -37,6 +37,12 @@ quick-tap-ms = <100>;};
     quick-release;
 };
 
+&mt {
+    flavor = "tap-preferred";
+    tapping-term-ms = <250>;
+    require-prior-idle-ms = <125>;
+};
+
 //Fim dos comportamentos de teclas
 
 / {
@@ -128,12 +134,6 @@ quick-tap-ms = <100>;};
             layers = <3>;
         };
 
-        WinV {
-            bindings = <&kp LG(V)>;
-            key-positions = <37 40>;
-            layers = <1>;
-        };
-
         Delete-Esq {
             bindings = <&kp DELETE>;
             key-positions = <13 14 15>;
@@ -217,11 +217,11 @@ quick-tap-ms = <100>;};
             //         └─────┴─────┴─────┴─────┴─────┘                                        └─────┴─────┴────┴─────┴─────┘
 
             bindings = <
-&none  &kp N1          &kp N2          &kp N3            &kp N4               &kp N5                                                 &kp N6       &kp N7               &kp N8        &kp N9            &kp N0              &kp PG_UP
-&none  &kp Q           &kp W           &kp E             &kp R                &kp T                                                  &kp Y        &kp U                &kp I         &kp O             &kp P               &kp PG_DN
-&none  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_SHIFT D  &mt LEFT_CONTROL F   &kp G                                                  &kp H        &mt RIGHT_CONTROL J  &mt RSHIFT K  &mt RIGHT_ALT L   &mt RIGHT_GUI SEMI  &kp SQT
-&none  &kp Z           &kp X           &kp C             &kp V                &kp B                                                  &kp N        &kp M                &kp COMMA     &kp DOT           &kp FSLH            &none
-                                       &none             &tog ESQUERDA_MOUSE  &kp LALT  &mo ESQUERDA  &mt LEFT_ALT SPACE  &kp SPACE  &mo DIREITA  &none                &none         &tog DIREITA_Num
+&none  &kp N1          &kp N2          &kp N3              &kp N4               &kp N5                                                 &kp N6       &kp N7             &kp N8               &kp N9            &kp N0              &kp PG_UP
+&none  &kp Q           &kp W           &kp E               &kp R                &kp T                                                  &kp Y        &kp U              &kp I                &kp O             &kp P               &kp PG_DN
+&none  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F     &kp G                                                  &kp H        &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L   &mt RIGHT_GUI SEMI  &kp SQT
+&none  &kp Z           &kp X           &kp C               &kp V                &kp B                                                  &kp N        &kp M              &kp COMMA            &kp DOT           &kp FSLH            &none
+                                       &none               &tog ESQUERDA_MOUSE  &kp LALT  &mo ESQUERDA  &mt LEFT_ALT SPACE  &kp SPACE  &mo DIREITA  &none              &none                &tog DIREITA_Num
             >;
         };
 
