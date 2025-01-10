@@ -8,9 +8,6 @@
 #include <dt-bindings/zmk/pointing.h>
 
 //Fim das incluçoes
-
-
-
 //Inicio das definiçoes de configurações
 //MOUSE
 
@@ -18,8 +15,6 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // padrão: 10
 
 //Fim das definiçoes de configurações
-
-
 //Inicio das definiçoes das camadas
 
 #define BASE 0
@@ -30,11 +25,7 @@
 #define AMBAS 5
 
 //Fim das definiçoes das camadas
-
-
 //Inicio dos comportamentos de teclas
-
-
 //MT = MOD-TAP, se eu tocar o SHIFT pelo tempo menor que delimitei, ele vira o caps_word, caso eu continue pressionando o shift, ele se mantem como shift 
 
 &mt {
@@ -50,7 +41,6 @@
     release-after-ms = <2000>;
     quick-release;
 };
-
 
 //Fim dos comportamentos de teclas
 
@@ -167,8 +157,8 @@
     };
 
     //Fim
-
     //inicio macro
+
     macros {
         Sen1: Sen1 {
             compatible = "zmk,behavior-macro";
@@ -180,8 +170,8 @@
             label = "SEN1";
         };
     };
-    //fim macro
 
+    //fim macro
 
     keymap {
         compatible = "zmk,keymap";
@@ -204,11 +194,11 @@
             //         └─────┴─────┴─────┴─────┴─────┘                                        └─────┴─────┴────┴─────┴─────┘
 
             bindings = <
-&none  &kp N1          &kp N2          &kp N3              &kp N4               &kp N5                                                 &kp N6       &kp N7             &kp N8               &kp N9            &kp N0              &kp PG_UP
-&none  &kp Q           &kp W           &kp E               &kp R                &kp T                                                  &kp Y        &kp U              &kp I                &kp O             &kp P               &kp PG_DN
-&none  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F     &kp G                                                  &kp H        &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L   &mt RIGHT_GUI SEMI  &kp SQT
-&none  &kp Z           &kp X           &kp C               &kp V                &kp B                                                  &kp N        &kp M              &kp COMMA            &kp DOT           &kp FSLH            &none
-                                       &none               &tog ESQUERDA_MOUSE  &kp LALT  &mo ESQUERDA  &mt LEFT_ALT SPACE  &kp SPACE  &mo DIREITA  &none              &none                &tog DIREITA_Num
+&none  &kp N1          &kp N2          &kp N3              &kp N4               &kp N5                                               &kp N6       &kp N7             &kp N8               &kp N9            &kp N0              &none
+&none  &kp Q           &kp W           &kp E               &kp R                &kp T                                                &kp Y        &kp U              &kp I                &kp O             &kp P               &none
+&none  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F     &kp G                                                &kp H        &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L   &mt RIGHT_GUI SEMI  &none
+&none  &kp Z           &kp X           &kp C               &kp V                &kp B                                                &kp N        &kp M              &mt SQT COMMA        &kp DOT           &mt BSLH FSLH       &none
+                                       &none               &tog ESQUERDA_MOUSE  &none   &mo ESQUERDA  &mt LEFT_ALT SPACE  &kp SPACE  &mo DIREITA  &none              &none                &tog DIREITA_Num
             >;
         };
 
@@ -232,7 +222,7 @@
 
             bindings = <
 &none  &none     &kp F2      &kp F3        &kp F4    &kp F5                         &none  &none  &none  &none  &none  &none
-&none  &none     &none       &kp C_VOL_UP  &none     &none                          &none  &none  &none  &none  &none  &none
+&none  &none     &none       &kp C_VOL_UP  &none     &kp F9                         &none  &none  &none  &none  &none  &none
 &none  &none     &kp C_NEXT  &kp C_VOL_DN  &kp LBRC  &kp RBRC                       &none  &none  &none  &none  &none  &none
 &none  &kp C_RW  &kp C_FF    &kp C_MUTE    &kp LBKT  &kp RBKT                       &none  &none  &none  &none  &none  &none
                              &none         &none     &none     &none  &none  &none  &none  &none  &none  &none
@@ -258,11 +248,11 @@
             //         └─────┴─────┴─────┴─────┴─────┘                                                          └───────┴─────┴────┴─────┴─────┘
 
             bindings = <
-&kp ESC    &none  &none           &mkp MB3         &none                &none                                      &none  &none  &none  &none  &none  &none
-&kp TAB    &none  &mkp MB4        &mmv MOVE_UP     &mkp MB5             &msc SCRL_UP                               &none  &none  &none  &none  &none  &none
-&kp LSHFT  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT      &msc SCRL_DOWN                             &none  &none  &none  &none  &none  &none
-&kp LCTRL  &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none                &none                                      &none  &none  &none  &none  &none  &none
-                                  &none            &tog ESQUERDA_MOUSE  &kp LALT        &mkp MB1  &mkp MB2  &none  &none  &none  &none  &none
+&none  &none  &none           &mkp MB3         &none                &none                                      &none  &none  &none  &none  &none  &none
+&none  &none  &mkp MB4        &mmv MOVE_UP     &mkp MB5             &msc SCRL_UP                               &none  &none  &none  &none  &none  &none
+&none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT      &msc SCRL_DOWN                             &none  &none  &none  &none  &none  &none
+&none  &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none                &none                                      &none  &none  &none  &none  &none  &none
+                              &none            &tog ESQUERDA_MOUSE  &kp LALT        &mkp MB1  &mkp MB2  &none  &none  &none  &none  &none
             >;
         };
 
@@ -285,11 +275,11 @@
             //         └─────┴────┴─────┴─────┴─────┘               └───────┴─────┴─────┴─────┴─────┘
 
             bindings = <
-&none  &none  &none  &none  &none  &none                       &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &kp EQUAL
-&none  &none  &none  &none  &none  &none                       &kp PG_UP   &none         &kp UP        &none         &none         &kp MINUS
-&none  &none  &none  &none  &none  &none                       &kp PG_DN   &kp LEFT      &kp DOWN      &kp RIGHT     &none         &kp TILDE
-&none  &none  &none  &none  &none  &none                       &none       &none         &none         &none         &kp BSLH      &none
-                     &none  &none  &none  &none  &none  &none  &none       &none         &none         &none
+&none  &none  &none  &none  &none  &none                       &none           &none         &none         &none         &none            &none
+&none  &none  &none  &none  &none  &none                       &kp PG_UP       &none         &kp UP        &none         &mt MINUS EQUAL  &none
+&none  &none  &none  &none  &none  &none                       &kp PG_DN       &kp LEFT      &kp DOWN      &kp RIGHT     &kp TILDE        &none
+&none  &none  &none  &none  &none  &none                       &bt BT_CLR_ALL  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3     &none
+                     &none  &none  &none  &none  &none  &none  &none           &none         &none         &none
             >;
         };
 
